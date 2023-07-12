@@ -50,7 +50,7 @@ function Layout() {
       <div
         className={` ${
           loginModalOpen || registerModalOpen
-            ? "fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-70 z-40"
+            ? "fixed left-0 top-0 z-40 h-screen w-screen bg-black bg-opacity-70"
             : ""
         }`}
       >

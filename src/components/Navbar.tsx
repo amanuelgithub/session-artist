@@ -68,7 +68,7 @@ function Navbar({
               initial={searchOpen ? { x: "-100vw" } : {}}
               animate={searchOpen ? { x: 0 } : {}}
               transition={{ duration: 0.5 }}
-              type="text"
+              type=""
               placeholder="Search"
               className="h-11 w-full border-2 border-gray bg-gray px-4 outline-none md:w-96"
             />

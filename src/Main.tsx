@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import CatagoriesList from "./components/CatagoriesList";
 
 function Main() {
@@ -8,27 +7,31 @@ function Main() {
       {/* <div className={`${!menuOpen ? "block" : "hidden"} `}> */}
       {/* header section for the main section */}
       <div className="mx-20 my-16 ">
-        <h1 className="text-3xl sm:text-5xl font-semibold text-center">
+        <h1 className="text-center text-3xl font-semibold sm:text-5xl">
           Session Artists for your dream project
         </h1>
-        <h3 className="text-center my-4 font-semibold text-lg">
+
+        <h3 className="my-4 text-center text-lg font-semibold">
           Select Category
         </h3>
+
         {/* gradients */}
-        <div className="flex absolute top-1/4 left-1/4 sm:left-1/2">
-          <div className="w-28 h-28 bg-primary rounded-full blur-3xl"></div>
-          <div className="w-28 h-28 bg-secondary rounded-full blur-3xl"></div>
+        <div className="absolute left-1/4 top-1/4 flex sm:left-1/2">
+          <div className="h-28 w-28 rounded-full bg-primary blur-3xl"></div>
+          <div className="h-28 w-28 rounded-full bg-secondary blur-3xl"></div>
         </div>
       </div>
+
       {/* Find an Artist and Become Seller Buttons */}
-      <div className="flex justify-evenly my-8 sm:justify-center sm:gap-8">
+      <div className="my-8 flex justify-evenly sm:justify-center sm:gap-8">
         <div>
-          <button className="w-40 h-10 text-lg font-semibold bg-secondary rounded-md border-2 border- bg-opacity-10 text-secondary">
+          <button className="border- h-10 w-40 rounded-md border-2 bg-secondary bg-opacity-10 text-lg font-semibold text-secondary">
             Find an artist
           </button>
         </div>
+
         <div>
-          <button className="w-40 h-10 text-lg font-semibold bg-primary rounded-md border-2 border- bg-opacity-10 text-primary">
+          <button className="border- h-10 w-40 rounded-md border-2 bg-primary bg-opacity-10 text-lg font-semibold text-primary">
             Become seller
           </button>
         </div>
@@ -37,17 +40,20 @@ function Main() {
       <CatagoriesList />
 
       {/* Social links section */}
-      <div className="flex justify-center my-16">
+      <div className="my-16 flex justify-center">
         <div>
           <div className="my-4">
-            <h2 className="text-center text-xl relative">
+            <h2 className="relative text-center text-xl">
               Social
-              <span className="w-10 h-2 bg-secondary bg-opacity-70 absolute bottom-0 right-4"></span>
+              <span className="absolute bottom-0 right-4 h-2 w-10 bg-secondary bg-opacity-70"></span>
             </h2>
           </div>
+
           <div className="flex gap-2">
             <img src="images/instagram.png" alt="instagram" />
+
             <img src="images/facebook.png" alt="facebook" />
+
             <img src="images/twitter.png" alt="" />
           </div>
         </div>

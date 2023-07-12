@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 import { disableScroll, enableScroll } from "../utils/scroll-behaviour";
 import MobileMenuWithCategory from "../components/MobileMenuWithCategory";
+import CatalogHeader from "../components/categories/CatalogHeader";
 
 function CatalogLayout() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -67,6 +68,8 @@ function CatalogLayout() {
           onRegisterModalOpen={setRegisterModalOpen}
         />
       </div>
+
+      <CatalogHeader />
 
       <Outlet />
 
