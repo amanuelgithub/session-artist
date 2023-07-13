@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ButtonLight, ButtonPrimary } from "./ui/Button";
+import { LoginContext } from "../login-context";
 
 interface Props {
   searchOpen: any;
-  menuOpen: boolean;
+  mobileMenuOpen: boolean;
   loginModalOpen: any;
   registerModalOpen: any;
   onSearchOpen: any;
@@ -16,17 +17,24 @@ interface Props {
 }
 
 function Navbar({
+  mobileMenuOpen,
   searchOpen,
-  menuOpen,
-  loginModalOpen,
-  registerModalOpen,
   onSearchOpen,
   openMobileMenu,
   closeMobileMenu,
+  loginModalOpen,
   onLoginModalOpen,
+  registerModalOpen,
   onRegisterModalOpen,
 }: Props) {
-  let location = useLocation();
+  const { isLoggedIn, login } = useContext(LoginContext);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    login(false);
+    navigate(-1);
+  };
 
   return (
     <nav>
@@ -95,28 +103,27 @@ function Navbar({
         <div className={`${searchOpen ? "hidden" : "block"} mr-4 sm:hidden`}>
           {/* menu icon */}
           <motion.img
-            animate={menuOpen ? { rotate: 90 } : {}}
+            animate={mobileMenuOpen ? { rotate: 90 } : {}}
             src="/images/menu.png"
             alt="menu"
             onClick={() => openMobileMenu()}
-            className={`${!menuOpen ? "block" : "hidden"}`}
+            className={`${!mobileMenuOpen ? "block" : "hidden"}`}
           />
           {/* close icon */}
           <motion.img
-            animate={!menuOpen ? { rotate: -90 } : {}}
+            animate={!mobileMenuOpen ? { rotate: -90 } : {}}
             src="/images/close.png"
             alt="close"
             onClick={() => closeMobileMenu()}
-            className={`${menuOpen ? "block" : "hidden"}`}
+            className={`${mobileMenuOpen ? "block" : "hidden"}`}
           />
         </div>
 
         {/* Desktop Login and Register Buttons */}
         <div className={`my-10 hidden justify-center sm:my-0 sm:flex`}>
-          {location.pathname === "/service-profile" ||
-          location.pathname === "/user-profile" ? (
+          {isLoggedIn ? (
             <div className="my-2">
-              <ButtonLight>Logout</ButtonLight>
+              <ButtonLight onClick={handleLogout}>Logout</ButtonLight>
             </div>
           ) : (
             <div className="sm:flex sm:items-center sm:justify-center sm:gap-4">

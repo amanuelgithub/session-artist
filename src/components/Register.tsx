@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import { LoginContext } from "../login-context";
 
 interface Props {
   registerModalOpen: any;
@@ -7,10 +8,12 @@ interface Props {
 }
 
 function Register({ registerModalOpen, onRegisterModalOpen }: Props) {
+  const { isLoggedIn } = useContext(LoginContext);
+
   const variants = { open: { y: 0 }, close: { y: "-100vh" } };
   return (
     <motion.div
-      animate={registerModalOpen ? "open" : "close"}
+      animate={registerModalOpen && !isLoggedIn ? "open" : "close"}
       variants={variants}
     >
       <div

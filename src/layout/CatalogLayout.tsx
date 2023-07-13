@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import Login from "../components/Login";
 import Register from "../components/Register";
@@ -7,8 +7,10 @@ import { Outlet } from "react-router-dom";
 import { disableScroll, enableScroll } from "../utils/scroll-behaviour";
 import MobileMenuWithCategory from "../components/MobileMenuWithCategory";
 import CatalogHeader from "../components/categories/CatalogHeader";
+import { LoginContext } from "../login-context";
 
 function CatalogLayout() {
+  const { isLoggedIn } = useContext(LoginContext);
   const [searchOpen, setSearchOpen] = useState(false);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,7 +32,7 @@ function CatalogLayout() {
     <div className="relative mx-4 sm:mx-10 md:mx-20 lg:mx-36">
       <Navbar
         searchOpen={searchOpen}
-        menuOpen={mobileMenuOpen}
+        mobileMenuOpen={mobileMenuOpen}
         loginModalOpen={loginModalOpen}
         registerModalOpen={registerModalOpen}
         onSearchOpen={setSearchOpen}
@@ -51,7 +53,7 @@ function CatalogLayout() {
       {/* login and register dialog are here => another mechanism needs to used to display this dialogs */}
       <div
         className={` ${
-          loginModalOpen || registerModalOpen
+          (loginModalOpen || registerModalOpen) && !isLoggedIn
             ? "fixed left-0 top-0 z-40 h-screen w-screen bg-black bg-opacity-70"
             : ""
         }`}

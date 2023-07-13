@@ -3,17 +3,9 @@ import PersonCardNew from "./PersonCardNew";
 import FancyHeader from "../FancyHeader";
 import PaginationSection from "../PaginationSection";
 import { motion } from "framer-motion";
+import { guitars } from "../../users";
 
 function Guitars() {
-  const personsImages = [
-    "/images/artist1.png",
-    "/images/artist2.png",
-    "/images/artist3.png",
-    "/images/artist4.png",
-    "/images/artist5.png",
-    "/images/artist6.png",
-  ];
-
   const pageTransition = {
     initial: {
       opacity: 0,
@@ -38,8 +30,13 @@ function Guitars() {
 
       <div className="flex justify-center">
         <div className="sm:gap-8 md:grid md:grid-cols-2 lg:grid-cols-3">
-          {personsImages.map((image, index) => (
-            <PersonCardNew key={index} index={index} image={image} />
+          {guitars.map((user, index) => (
+            <PersonCardNew
+              key={user.id}
+              id={user.id}
+              name={user.name}
+              image={user.img}
+            />
           ))}
         </div>
       </div>

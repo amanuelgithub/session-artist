@@ -1,23 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
-  index: number;
+  id: number;
+  name: string;
   image: string;
 }
 
-function PersonCardNew({ index, image }: Props) {
+function PersonCardNew({ id, name, image }: Props) {
   return (
-    <div
-      key={index}
-      className="w-full h-fit border-2 border-secondary-light rounded-md relative"
-    >
+    <div className="relative h-fit w-full rounded-md border-2 border-secondary-light">
       {/* card header image */}
-      <div className="w-full p-4 h-fit mx-auto">
+      <div className="mx-auto h-fit w-full p-4">
         <div className="relative">
           {/* image */}
-          <img src={`${image}`} alt={`${image}`} className="w-full" />
+          <img src={`${image}`} alt={`${name}`} className="w-full" />
           {/* heart icon */}
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white absolute top-6 right-6 flex justify-center items-center">
+          <div className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center rounded-full bg-white sm:h-10 sm:w-10">
             <img src="/images/heart.png" alt="heart" className="p-1 sm:p-0" />
           </div>
         </div>
@@ -26,9 +25,9 @@ function PersonCardNew({ index, image }: Props) {
       {/* Card Body */}
       <div className="mx-4">
         {/* card username and rating section */}
-        <div className="flex justify-between items-center my-3">
+        <div className="my-3 flex items-center justify-between">
           <p className="text-lg font-semibold">@nickportman</p>
-          <div className="flex justify-center items-center gap-1">
+          <div className="flex items-center justify-center gap-1">
             <p>5.0</p>
             <img src="/images/star.png" alt="start" />
           </div>
@@ -37,19 +36,21 @@ function PersonCardNew({ index, image }: Props) {
         <hr className="text-secondary-light" />
 
         <div>
-          <p className="italic my-4">
+          <p className="my-4 italic">
             “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.”
           </p>
-          <div className="flex justify-evenly items-center">
+          <div className="flex items-center justify-evenly">
             <div>
               starting
-              <span className="text-secondary font-bold">at 5$</span>
+              <span className="font-bold text-secondary">at 5$</span>
             </div>
             <div className="my-2">
-              <button className="w-20 h-10 text-lg font-semibold bg-primary rounded-md border-2 border-primary text-gray">
-                More
-              </button>
+              <Link to={`/service-profile/${id}`}>
+                <button className="h-10 w-20 rounded-md border-2 border-primary bg-primary text-lg font-semibold text-gray">
+                  More
+                </button>
+              </Link>
             </div>
           </div>
         </div>

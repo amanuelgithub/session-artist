@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import { LoginContext } from "../login-context";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
-  loginModalOpen: any;
-  onLoginModalOpen: any;
+  loginModalOpen: boolean;
+  onLoginModalOpen: (value: boolean) => void;
 }
 
 function Login({ loginModalOpen, onLoginModalOpen }: Props) {
+  const { isLoggedIn, login } = useContext(LoginContext);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    onLoginModalOpen(false);
+    login(true);
+    navigate("/user-profile/1");
+  };
+
   const variants = {
     open: { y: 0 },
     close: { y: "-100vh" },
   };
 
   return (
-    <motion.div animate={loginModalOpen ? "open" : "close"} variants={variants}>
+    <motion.div
+      animate={loginModalOpen && !isLoggedIn ? "open" : "close"}
+      variants={variants}
+    >
       <div
         className={`${
           loginModalOpen ? "block" : "hidden"
@@ -23,12 +37,14 @@ function Login({ loginModalOpen, onLoginModalOpen }: Props) {
           {/* modal header */}
           <div className="relative">
             <h1 className="mb-3 text-center text-3xl font-bold">Login</h1>
+
             <img
               src="/images/close.png"
               alt="close"
               onClick={() => onLoginModalOpen(false)}
               className="absolute right-0 top-0"
             />
+
             <hr className="font-bold text-gray" />
           </div>
           {/* modal body */}
@@ -39,13 +55,18 @@ function Login({ loginModalOpen, onLoginModalOpen }: Props) {
                 placeholder="Enter your Email"
                 className="my-2 h-11 w-full rounded-md border-2 border-gray px-2 outline-none"
               />
+
               <input
                 type="password"
                 placeholder="Choose a Password"
                 className="h-11 w-full rounded-md border-2 border-gray px-2 outline-none"
               />
+
               <div className="mt-2 flex justify-center">
-                <button className="h-10 w-40 rounded-md border-2 bg-primary  text-lg font-semibold text-gray">
+                <button
+                  onClick={handleLogin}
+                  className="h-10 w-40 rounded-md border-2 bg-primary  text-lg font-semibold text-gray"
+                >
                   Join
                 </button>
               </div>

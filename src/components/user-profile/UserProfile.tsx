@@ -1,28 +1,11 @@
 import React from "react";
-import Navbar from "../Navbar";
 import FancyHeader from "../FancyHeader";
 import Footer from "../Footer";
 import PaginationSection from "../PaginationSection";
 
 function UserProfile() {
   return (
-    <div className="mx-4 sm:mx-10 md:mx-20 lg:mx-36">
-      <Navbar
-        searchOpen={undefined}
-        menuOpen={false}
-        loginModalOpen={undefined}
-        registerModalOpen={undefined}
-        onSearchOpen={undefined}
-        openMobileMenu={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        closeMobileMenu={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        onLoginModalOpen={undefined}
-        onRegisterModalOpen={undefined}
-      />
-
+    <div>
       {/* container */}
       <div className="flex h-full w-full flex-col items-start justify-center gap-10 sm:flex-row ">
         {/* left section */}

@@ -3,17 +3,9 @@ import FancyHeader from "../FancyHeader";
 import PersonCardNew from "./PersonCardNew";
 import PaginationSection from "../PaginationSection";
 import { motion } from "framer-motion";
+import { pianists } from "../../users";
 
 function Pianists() {
-  const personsImages = [
-    "/images/artist3.png",
-    "/images/artist4.png",
-    "/images/artist5.png",
-    "/images/artist6.png",
-    "/images/artist1.png",
-    "/images/artist2.png",
-  ];
-
   const pageTransition = {
     initial: {
       opacity: 0,
@@ -37,9 +29,14 @@ function Pianists() {
       <FancyHeader>Pianists</FancyHeader>
 
       <div className="flex justify-center">
-        <div className="sm:gap-8 md:grid md:grid-cols-2 lg:grid-cols-3">
-          {personsImages.map((image, index) => (
-            <PersonCardNew key={index} index={index} image={image} />
+        <div className="md:grid-c ols-2 sm:gap-8  md:grid lg:grid-cols-3">
+          {pianists.map((user) => (
+            <PersonCardNew
+              key={user.id}
+              id={user.id}
+              name={user.name}
+              image={user.img}
+            />
           ))}
         </div>
       </div>

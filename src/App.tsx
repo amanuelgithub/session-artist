@@ -17,6 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
+            <Route path="service-profile/:id" element={<ServiceProfile />} />
+            <Route path="user-profile/:id" element={<UserProfile />} />
           </Route>
 
           <Route path="/category" element={<CatalogLayout />}>
@@ -25,10 +27,6 @@ function App() {
             <Route path="drums" element={<Drums />} />
             <Route path="vocals" element={<Vocals />} />
           </Route>
-
-          <Route path="/service-profile" element={<ServiceProfile />} />
-
-          <Route path="/user-profile" element={<UserProfile />} />
         </Routes>
       </BrowserRouter>
     </AnimatePresence>
