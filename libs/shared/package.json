@@ -1,0 +1,21 @@
+{
+  "name": "@session-artist/shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".dist/index.js",
+  "types": ".dist/index.d.ts",
+  "scripts": {
+    "start:dev": "rm -rf ./.dist && tsc -w",
+    "build": "rm -rf ./.dist && tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "zod": "^3.24.1"
+  },
+  "peerDependencies": {
+    "zod": "^3.24.1"
+  }
+}
