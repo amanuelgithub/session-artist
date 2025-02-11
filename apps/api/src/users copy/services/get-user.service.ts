@@ -1,7 +1,7 @@
-import { DetailResponse, UserRole } from '@apps/api/common';
-import { UserEntity } from '@apps/api/database/entities';
 import { Injectable } from '@nestjs/common';
 import { DataSource, EntityManager } from 'typeorm';
+import { DetailResponse, UserRole } from '../../common';
+import { UserEntity } from '../entities/user.entity';
 
 @Injectable()
 export class GetUserService {

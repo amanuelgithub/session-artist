@@ -1,4 +1,4 @@
-import { UsersService } from '@apps/api/users/users.service';
+import { UsersService } from '@apps/api/users';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()

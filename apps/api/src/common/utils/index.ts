@@ -10,6 +10,6 @@
 // export * from './object.util';
 // export * from './password-validator';
 // export * from './phone.validator';
-// export * from './secret-gen';
+export * from './secret-gen';
 // export * from './security.util';
 // export * from './string.util';

@@ -6,8 +6,9 @@ import { RefreshTokenPayload, AccessTokenPayload, TokensDto } from '../dtos';
 import { RedisService } from '@apps/api/redis/redis.service';
 // import { IJwtConfig, JWT_CONFIG } from './config/auth/jwt.config';
 import { GetUserService } from '@apps/api/users/services';
-import { UserEntity } from '@apps/api/users/entities/user.entity';
+// import { UserEntity } from '@apps/api/users/entities/user.entity';
 import { UserRole } from '@apps/api/common/enums';
+import { UserEntity } from '@apps/api/database/entities';
 
 @Injectable()
 export class TokenService {
